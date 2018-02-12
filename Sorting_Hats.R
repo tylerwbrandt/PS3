@@ -50,20 +50,16 @@ sort.student <- function(x, y){
   a <-  matrix(c(x$courage, x$ambition, x$intelligence, x$effort), nrow = 1)
   b <-  y%*%t(a)
   if (b[1,1] == max(b)){
-    x$class1 <- "Gryffindor"
-    x$class2 <- "Slytherin"
+    class(x) <- "Gryffindor"
     return(x)
   } else if (b[2,1] == max(b)){
-    x$class1 <- "Slytherin"
-    x$class2 <- "Ravenclaw"
+    class(x) <- "Slytherin"
     return(x)
   } else if (b[3,1] == max(b)){
-    x$class1 <- "Ravenclaw"
-    x$class2 <- "Hufflepuff"
+    class(x) <- "Ravenclaw"
     return(x)
   } else if (b[4,1] == max(b)){
-    x$class1 <- "Hufflepuff"
-    x$class2 <- "Gryffindor"
+    class(x) <- "Hufflepuff"
     return(x)
   }
 }
@@ -79,4 +75,4 @@ Black_Lake <- new.env()
 Ravenclaw_Tower <- new.env()
 Basement <- new.env()
 
-
+# Create curfew function
