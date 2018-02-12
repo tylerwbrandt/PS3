@@ -79,3 +79,18 @@ Basement <- new.env()
 curfew <- function(x){
   UseMethod("curfew", x)
 }
+
+## Create Gryffindor method
+curfew.Gryffindor <- function(x){
+  
+}
+
+
+
+install.packages("pryr")
+library(pryr)
+where("harry")
+
+assign("harry", get("harry"), Gryffindor_Tower)
+Gryffindor_Tower
+ls(Gryffindor_Tower)
