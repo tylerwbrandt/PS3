@@ -71,4 +71,12 @@ sort.student <- function(x, y){
 # Test function
 sort(harry, y = generic_matrix)
 
+# 4. Create new environments and a generic function that sends students to their environments.
+
+# Create four new environments
+Gryffindor_Tower <- new.env()
+Black_Lake <- new.env()
+Ravenclaw_Tower <- new.env()
+Basement <- new.env()
+
 
