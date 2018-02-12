@@ -68,5 +68,7 @@ sort.student <- function(x, y){
   }
 }
 
+# Test function
+sort(harry, y = generic_matrix)
 
 
