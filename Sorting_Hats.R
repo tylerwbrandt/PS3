@@ -77,6 +77,8 @@ Ravenclaw_Tower <- new.env()
 Basement <- new.env()
 
 # Create curfew function
+## curfew will take in an object of class Gryffindor, Slytherin, Ravenclaw, or Hufflepuff.
+## It will move that object to its dormitory (environment) based on the class that it was assigned
 curfew <- function(x){
   UseMethod("curfew", x)
 }
@@ -109,14 +111,12 @@ curfew.Hufflepuff <- function(x){
   rm(list = y, envir = .GlobalEnv)
 }
 
+
+# Test curfew
 curfew(harry)
 ls(Gryffindor_Tower)
 ls(Black_Lake)
 ls(Ravenclaw_Tower)
 ls(Basement)
 ls(globalenv())
-
-install.packages("pryr")
-library(pryr)
-where("harry")
 
