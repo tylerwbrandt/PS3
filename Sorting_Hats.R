@@ -76,3 +76,6 @@ Ravenclaw_Tower <- new.env()
 Basement <- new.env()
 
 # Create curfew function
+curfew <- function(x){
+  UseMethod("curfew", x)
+}
