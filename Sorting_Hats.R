@@ -1,5 +1,8 @@
 #Activity 5: The Sorting Hat!
 
+# 1. make studentmaker function
+## student maker takes in the name of a person and returns a student object,
+## which is a vector of length five, giving random values for ambition, intelligence, courage, and effort.
 studentmaker <- function(person){
   name1 <- person
   ambition1 <- sample(1:100,1)
@@ -10,23 +13,27 @@ studentmaker <- function(person){
   class(student) <- "student"
   return(student)
 }
-studentmaker("Harry")
+harry <- studentmaker("Harry")
 
 sort.student <- function(x, y){
-  if(!identical(length(y), 16) & identical{
-    return("Second argument must be a vector of length: 4")
+  if(length(y) != 16 | nrow(y) != 4){
+    return("Second argument must be a 4x4 matrix")
   }
-  a = c(x$courage, x$ambition, x$intelligence, x$effort)
-  b = y*a
-  if(identical(b[1], max(b))){
+  a <-  matrix(c(x$courage, x$ambition, x$intelligence, x$effort), nrow = 1)
+  b <-  y%*%t(a)
+  if (b[1,1] == max(b)){
     return("GRIFFINDOR!")
-  } else if(identical(b[2], max(b))){
+  } else if (b[2,1] == max(b)){
     return("SYLTHERIN!")
-  } else if(identical(b[3], max(b))){
+  } else if (b[3,1] == max(b)){
     return("RAVENCLAW!")
-  } else if(identical(b[1], max(b))){
+  } else if (b[4,1] == max(b)){
     return("HUFFLEPUFF!")
   } else{
     return("I can't decide!")
   }
 }
+
+# Test function
+generic_matrix <- matrix(1:16, nrow = 4)
+sort(harry, y = generic_matrix)
