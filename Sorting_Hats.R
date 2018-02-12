@@ -38,7 +38,7 @@ sort.student <- function(x, y){
 }
 
 # Test function
-generic_matrix <- matrix(1:16, nrow = 4)
+generic_matrix <- matrix(sample(1:16, 16), nrow = 4)
 sort(harry, y = generic_matrix)
 
 
@@ -65,7 +65,8 @@ sort.student <- function(x, y){
 }
 
 # Test function
-sort(harry, y = generic_matrix)
+harry <- sort(harry, y = generic_matrix)
+harry
 
 # 4. Create new environments and a generic function that sends students to their environments.
 
@@ -82,16 +83,39 @@ curfew <- function(x){
 
 ## Create Gryffindor method
 curfew.Gryffindor <- function(x){
-  
+  assign(deparse(substitute(x)), get(deparse(substitute(x))), Gryffindor_Tower)
+  rm(x, envir = .GlobalEnv)
 }
 
+## Create Slytherin method
+curfew.Slytherin <- function(x){
+  assign(x, get(x), Black_Lake)
+  rm(x, envir = .GlobalEnv)
+}
 
+## Create Ravenclaw method
+curfew.Ravenclaw <- function(x){
+  assign(x, get(x), Ravenclaw_Tower)
+  rm(x, envir = .GlobalEnv)
+}
+
+## Create Hufflepuff method
+curfew.Hufflepuff <- function(x){
+  assign(x, get(x), Basement)
+  rm(x, envir = .GlobalEnv)
+}
+
+curfew(harry)
+ls(Gryffindor_Tower)
+ls(Black_Lake)
+ls(Ravenclaw_Tower)
+ls(Basement)
 
 install.packages("pryr")
 library(pryr)
 where("harry")
 
-assign("harry", get("harry"), Gryffindor_Tower)
-Gryffindor_Tower
-ls(Gryffindor_Tower)
+assign("harry", get("harry"), envir = Gryffindor_Tower)
+Gryffindor_Tower$harry
 rm(harry, envir = Gryffindor_Tower)
+rm(x, envir = Gryffindor_Tower)
