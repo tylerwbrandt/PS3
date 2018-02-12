@@ -83,26 +83,30 @@ curfew <- function(x){
 
 ## Create Gryffindor method
 curfew.Gryffindor <- function(x){
-  assign(deparse(substitute(x)), get(deparse(substitute(x))), Gryffindor_Tower)
-  rm(x, envir = .GlobalEnv)
+  y <- deparse(substitute(x))
+  assign(y, get(y), Gryffindor_Tower)
+  rm(list = y, envir = .GlobalEnv)
 }
 
 ## Create Slytherin method
 curfew.Slytherin <- function(x){
-  assign(x, get(x), Black_Lake)
-  rm(x, envir = .GlobalEnv)
+  y <- deparse(substitute(x))
+  assign(y, get(y), Black_Lake)
+  rm(list = y, envir = .GlobalEnv)
 }
 
 ## Create Ravenclaw method
 curfew.Ravenclaw <- function(x){
-  assign(x, get(x), Ravenclaw_Tower)
-  rm(x, envir = .GlobalEnv)
+  y <- deparse(substitute(x))
+  assign(y, get(y), Ravenclaw_Tower)
+  rm(list = y, envir = .GlobalEnv)
 }
 
 ## Create Hufflepuff method
 curfew.Hufflepuff <- function(x){
-  assign(x, get(x), Basement)
-  rm(x, envir = .GlobalEnv)
+  y <- deparse(substitute(x))
+  assign(y, get(y), Basement)
+  rm(list = y, envir = .GlobalEnv)
 }
 
 curfew(harry)
@@ -110,12 +114,9 @@ ls(Gryffindor_Tower)
 ls(Black_Lake)
 ls(Ravenclaw_Tower)
 ls(Basement)
+ls(globalenv())
 
 install.packages("pryr")
 library(pryr)
 where("harry")
 
-assign("harry", get("harry"), envir = Gryffindor_Tower)
-Gryffindor_Tower$harry
-rm(harry, envir = Gryffindor_Tower)
-rm(x, envir = Gryffindor_Tower)
