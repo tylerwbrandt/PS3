@@ -94,3 +94,4 @@ where("harry")
 assign("harry", get("harry"), Gryffindor_Tower)
 Gryffindor_Tower
 ls(Gryffindor_Tower)
+rm(harry, envir = Gryffindor_Tower)
