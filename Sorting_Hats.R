@@ -15,6 +15,11 @@ studentmaker <- function(person){
 }
 harry <- studentmaker("Harry")
 
+# 2. Create a student method for the sort function
+## sort.student takes in a student and a 4x4 matrix, and uses matrix multiplication
+## to decide which group to assign the student to.
+## When running the sort.student method, must write sort(student, y = matrix).
+## Otherwise, R will think the second argument is for the "decreasing" argument.
 sort.student <- function(x, y){
   if(length(y) != 16 | nrow(y) != 4){
     return("Second argument must be a 4x4 matrix")
@@ -22,18 +27,46 @@ sort.student <- function(x, y){
   a <-  matrix(c(x$courage, x$ambition, x$intelligence, x$effort), nrow = 1)
   b <-  y%*%t(a)
   if (b[1,1] == max(b)){
-    return("GRIFFINDOR!")
+    return("GRYFFINDOR!")
   } else if (b[2,1] == max(b)){
     return("SYLTHERIN!")
   } else if (b[3,1] == max(b)){
     return("RAVENCLAW!")
   } else if (b[4,1] == max(b)){
     return("HUFFLEPUFF!")
-  } else{
-    return("I can't decide!")
   }
 }
 
 # Test function
 generic_matrix <- matrix(1:16, nrow = 4)
 sort(harry, y = generic_matrix)
+
+
+# 3. Change the sort function so that it alters the students and includes two classes
+sort.student <- function(x, y){
+  if(length(y) != 16 | nrow(y) != 4){
+    return("Second argument must be a 4x4 matrix")
+  }
+  a <-  matrix(c(x$courage, x$ambition, x$intelligence, x$effort), nrow = 1)
+  b <-  y%*%t(a)
+  if (b[1,1] == max(b)){
+    x$class1 <- "Gryffindor"
+    x$class2 <- "Slytherin"
+    return(x)
+  } else if (b[2,1] == max(b)){
+    x$class1 <- "Slytherin"
+    x$class2 <- "Ravenclaw"
+    return(x)
+  } else if (b[3,1] == max(b)){
+    x$class1 <- "Ravenclaw"
+    x$class2 <- "Hufflepuff"
+    return(x)
+  } else if (b[4,1] == max(b)){
+    x$class1 <- "Hufflepuff"
+    x$class2 <- "Gryffindor"
+    return(x)
+  }
+}
+
+
+
