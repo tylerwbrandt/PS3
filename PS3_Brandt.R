@@ -9,3 +9,18 @@ class(two) <- "door"
 three <- 3
 class(three) <- "door"
 
+# Create PlayGame function for doors
+PlayGame <- function(x){
+  UseMethod("PlayGame", x)
+}
+
+PlayGame.door <- function(x){
+  random_door <- sample(1:3, 1)
+  if (x == random_door){
+    print ("You won a new car!")
+  } else {
+    print ("Sorry, you will have to settle for a goat")
+  }
+}
+
+PlayGame(one)
