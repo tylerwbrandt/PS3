@@ -34,4 +34,12 @@ setClass(Class = "door",
          prototype = prototype(
            x = 1
          ))
-new("door")
+
+setValidity("door", function(object){
+  if (object @ x != 1 & object @ x != 2 & object@ x != 3){
+    return ("@x value for door object must be in {1,2,3}")
+  }
+})
+
+new("door", x = 4)
+new("door", x = 3)
