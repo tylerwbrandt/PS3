@@ -24,3 +24,14 @@ PlayGame.door <- function(x){
 }
 
 PlayGame(one)
+
+# S4 system
+## Define Doors
+setClass(Class = "door",
+         representation = representation(
+           x = "numeric"
+         ),
+         prototype = prototype(
+           x = 1
+         ))
+new("door")
